@@ -1,37 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
-int BinarySearch(int a[],int size, int x)//iterative
-{
-    int low=0,high=size-1;
+#include "sort.h"
 
-    while(low<=high)
-    {
-       int mid=low+(high-low)/2;
-        if(x==a[mid])
-            return mid;
-        else if(x<a[mid])
-            high=mid-1;
-        else
-            low=mid+1;
-
-    }
-    return -1;
-}
-
-int Binary_Search(int a[],int low,int high, int x){//recursive
-
-if(low>high)return -1;
-int mid=low+(high-low)/2;
-if(x==a[mid])
-    return mid;
-else if(x<a[mid])
-    return Binary_Search(a,low,mid-1,x);
-else
-      return Binary_Search(a,mid+1,high,x);
-}
 int main()
 {
-    int a[]={18,19,20,1,4,12,17};
-    printf("%d",BinarySearch( a,7,20));
+  int a[]={4,1,9,6,15},b[]={5,8,2,10};
+
+  int sizeA=sizeof(a)/sizeof(a[0]);
+    int sizeB=sizeof(b)/sizeof(b[0]);
+    int c[sizeA+sizeB];
+  bubble_Sort(a,sizeA);
+  printf("________________BUBBLE SORT_____________\n\n");
+  for(int i=0;i<sizeA;i++){
+    printf("%d ",a[i]);
+  }
+  Merge_Sort(a,sizeA);
+  Merge_Sort(b,sizeB);
+  Merge(a,sizeA,b,sizeB,c,sizeA+sizeB);
+   printf("\n\n________________MERGE SORT_____________\n\n");
+  for(int i=0;i<sizeA+sizeB;i++)
+    printf("%d ",c[i]);
+  printf("\n\n________________BINARY_SEARCH_____________\n\n");
+    printf("\nIN INDEX   %d",BinarySearch( a,sizeA,9));
+
     return 0;
 }
