@@ -28,3 +28,15 @@ else if(x<a[mid])
 else
       return Binary_Search(a,mid+1,high,x);
 }
+int Find_max_element(int a[],int low,int high){//recursive
+
+if(low>high)return -1;
+int mid=low+(high-low)/2;
+if(a[mid-1]<a[mid]&&a[mid]>a[mid+1])
+    return a[mid];
+else if(a[mid+1]>a[mid])
+      return Find_max_element(a,mid+1,high);
+
+else
+       return Find_max_element(a,low,mid-1);
+}

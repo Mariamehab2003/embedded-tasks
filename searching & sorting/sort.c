@@ -89,3 +89,34 @@ Merge_Sort(left,mid);
 Merge_Sort(right,n-mid);
 Merge(left,mid,right,n-mid,a,n);
 }
+int partition (int a[],int start,int end){
+int pivot=a[end],partition_index=start;
+for(int i=start;i<end;i++){
+    if(a[i]<=pivot){
+            int temp=a[i];
+    a[i]=a[partition_index];
+    a[partition_index]=temp;
+    partition_index++;
+
+    }
+}
+
+int temp1=a[end];
+a[end]= a[partition_index];
+ a[partition_index]=temp1;
+ return partition_index;
+
+}
+void Quick_Sort(int a[],int start,int end){
+if(start<end){
+
+
+    int partitionindex=partition(a,start,end);
+    Quick_Sort(a,start,partitionindex-1);
+      Quick_Sort(a,partitionindex+1,end);
+
+}
+
+
+
+}
